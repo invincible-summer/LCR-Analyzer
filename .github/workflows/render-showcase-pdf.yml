@@ -1,0 +1,53 @@
+name: Render showcase PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/show/html-to-ppt/slides.html"
+      - "docs/show/html-to-ppt/assets/**"
+      - ".github/workflows/render-showcase-pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-showcase-pdf
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Render HTML slides to PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          BROWSER="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [[ -z "$BROWSER" ]]; then
+            echo "No Chromium browser found on runner" >&2
+            exit 1
+          fi
+          SRC="$GITHUB_WORKSPACE/docs/show/html-to-ppt/slides.html"
+          OUT="$GITHUB_WORKSPACE/docs/show/html-to-ppt/LCR-硬件与Try1-Try3理论.pdf"
+          "$BROWSER"             --headless=new             --no-sandbox             --disable-gpu             --allow-file-access-from-files             --no-pdf-header-footer             --virtual-time-budget=25000             --print-to-pdf="$OUT"             "file://$SRC"
+          test -s "$OUT"
+
+      - name: Commit regenerated PDF
+        shell: bash
+        run: |
+          set -euo pipefail
+          PDF="docs/show/html-to-ppt/LCR-硬件与Try1-Try3理论.pdf"
+          if git diff --quiet -- "$PDF"; then
+            echo "PDF unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$PDF"
+          git commit -m "docs: regenerate showcase PDF"
+          git push
