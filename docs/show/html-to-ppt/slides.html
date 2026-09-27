@@ -352,7 +352,7 @@ code.mono {
   </div>
   <div class="hw-stage">
     <div class="card" style="max-width:1060px">
-      <p>本作品是一个LCR测量仪，可以在10-10kHz内几乎任意频点测量待测元件的复阻抗并自动计算串并联等效阻容感。此外还支持双端口网络幅频特性和相频特性测量，以及10-10kHz正弦波发生器功能。本作品可以将测量得到的数据通过BLE发送到专用网页上进行可视化展示，同时网页也具备单端口网络拟合，可以通过多频点扫频数据拟合出等效电路结构。</p>
+      <p>本作品是一个LCR测量仪，可以在10Hz-10kHz内几乎任意频点测量待测元件的复阻抗并自动计算串并联等效阻容感。此外还支持双端口网络幅频特性和相频特性测量，以及10Hz-10kHz正弦波发生器功能。本作品可以将测量得到的数据通过BLE发送到专用网页上进行可视化展示，同时网页也具备单端口网络拟合功能，可以通过多频点扫频数据拟合出等效电路结构。</p>
     </div>
   </div>
   <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 25</span></div>
@@ -387,7 +387,7 @@ code.mono {
     <div class="col" style="flex:1.04 1 0">
       <div class="card">
         <h3>操作流程</h3>
-        <p style="margin:0; text-align:justify; line-height:1.66">上电后，仪器将显示菜单界面，可以通过编码器旋转或上下按钮（K1,K2）调节菜单选项，并通过确定按钮（K4）选择选项。此后，仪器将进入频率调节界面，此时可通过上下按钮选择要更改的位，并通过编码器旋转增减该位的数字。K3为返回按键，可以返回上一级菜单或停止测量。</p>
+        <p style="margin:0; text-align:justify; line-height:1.66">上电后，仪器将显示菜单界面，可以通过编码器旋转或上下按钮调节菜单选项，并通过确定按钮选择选项。此后，仪器将进入频率调节界面，此时可通过上下按钮选择要更改的位，并通过编码器旋转增减该位的数字。K3为返回按键，可以返回上一级菜单或停止测量。</p>
       </div>
       <div class="card">
         <h3>五大功能</h3>
@@ -497,15 +497,15 @@ code.mono {
     <div class="kicker">硬件部分 · 实测数据</div>
     <h1 class="title">实测数据-电容容量随频率变化</h1>
   </div>
-  <div class="cols">
-    <div class="col" style="flex:0.5 1 0; justify-content:center">
+  <div class="cols" style="justify-content:center; gap:30px">
+    <div class="col" style="flex:0 0 46%; justify-content:center">
       <div class="card">
-        <p style="margin:0; text-align:justify; line-height:1.9">本仪器可以测量电容容量随频率的变化趋势。右图为测得相近容量的4个电容（除CBB为155外均为105）剩余容量随频率的变化趋势。由图可知，容量稳定性从高到低排序为CBB，独石电容2，有极性电解电容，独石电容1。</p>
+        <p style="margin:0; text-align:justify; line-height:1.9">本仪器可以测量电容容量随频率的变化趋势。右图为测得4个1uF电容和2个10uF电容剩余容量随频率的变化趋势。</p>
       </div>
     </div>
-    <div class="col" style="flex:1.5 1 0">
-      <div class="hw-figcard" style="flex:1 1 0; padding:8px 12px">
-        <img src="assets/hw/data-cfreq.png" alt="电容剩余容量随频率变化趋势">
+    <div class="col" style="flex:0 0 36%; min-height:0">
+      <div class="hw-figcard" style="flex:1 1 0; min-height:0; padding:8px 12px">
+        <img src="assets/hw/data-cfreq.png" alt="电容剩余容量随频率变化趋势" style="height:100%; width:100%; object-fit:contain">
       </div>
     </div>
   </div>
