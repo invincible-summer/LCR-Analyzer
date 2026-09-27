@@ -82,15 +82,6 @@ ul.tight { margin: 4px 0 0 0; padding-left: 22px; }
 ul.tight li { margin: 4.5px 0; }
 ul.tight li::marker { color: var(--accent); }
 .small { font-size: 14px; color: var(--muted); }
-.cite {
-  font-size: .68em; vertical-align: super; line-height: 0;
-  margin-left: 2px; font-weight: 800;
-}
-.cite a {
-  color: var(--accent-dark); text-decoration: none;
-  border-bottom: 1px dotted #93c5fd;
-}
-.cite a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .note {
   background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
   padding: 8px 14px; font-size: 14.5px; color: #713f12;
@@ -104,10 +95,12 @@ ul.tight li::marker { color: var(--accent); }
 }
 
 .sw-grid {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-rows: 1fr; gap: 14px; flex: 1 1 auto; min-height: 0;
 }
 .sw-grid .card { display: flex; flex-direction: column; padding: 16px 20px; }
+.sw-grid .card:nth-child(-n+3) { grid-column: span 2; }
+.sw-grid .card:nth-child(n+4) { grid-column: span 3; }
 .sw-grid .card h3 { margin-bottom: 8px; }
 .sw-grid .card p { margin: 0; color: var(--ink2); font-size: 15px; line-height: 1.62; text-align: justify; }
 .sw-grid .card.hl { background: var(--accent-soft); border-color: #93c5fd; }
@@ -215,7 +208,7 @@ ul.tight li::marker { color: var(--accent); }
   <div class="kicker">LCR ANALYZER · MULTIFUNCTIONAL LCR METER</div>
   <h1>多功能LCR测量仪</h1>
   <h2>张行言&amp;杨钧富队</h2>
-  <div class="meta">2026/9/19</div>
+  <div class="meta">2026/9/29</div>
   <svg class="wave" width="360" height="120" viewBox="0 0 360 120">
     <path d="M0,60 C30,10 60,10 90,60 S150,110 180,60 S270,10 300,60 S345,105 360,60"
           fill="none" stroke="#7dd3fc" stroke-width="2.5"/>
@@ -223,7 +216,7 @@ ul.tight li::marker { color: var(--accent); }
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 14</span>
+    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 15</span>
   </div>
 </section>
 
@@ -238,7 +231,7 @@ ul.tight li::marker { color: var(--accent); }
       <p>本作品是一个LCR测量仪，可以在10Hz-10kHz内几乎任意频点测量待测元件的复阻抗并自动计算串并联等效阻容感。此外还支持双端口网络幅频特性和相频特性测量，以及10Hz-10kHz正弦波发生器功能。本作品可以将测量得到的数据通过BLE发送到专用网页上进行可视化展示，同时网页也具备单端口网络拟合功能，可以通过多频点扫频数据拟合出等效电路结构。</p>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 15</span></div>
 </section>
 
 <!-- ================= H3 · 功能介绍（整机） ================= -->
@@ -257,7 +250,7 @@ ul.tight li::marker { color: var(--accent); }
       <div class="anno rev" style="left:-13.5%; top:54.3%; transform:translate(0,-50%)"><i></i>编码器</div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 15</span></div>
 </section>
 
 <!-- ================= H4 · 功能介绍（界面与功能） ================= -->
@@ -289,7 +282,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 15</span></div>
 </section>
 
 <!-- ================= HD · 硬件部分子标题页 ================= -->
@@ -305,7 +298,7 @@ ul.tight li::marker { color: var(--accent); }
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 14</span>
+    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 15</span>
   </div>
 </section>
 
@@ -313,12 +306,12 @@ ul.tight li::marker { color: var(--accent); }
 <section class="slide hw-figpage">
   <div class="titlebar">
     <div class="kicker">硬件部分 · 总体方案</div>
-    <h1 class="title">硬件总体方案框图<sup class="cite"><a href="#ref-20" title="bitluni, ESP32-S3-VGA">[20]</a></sup></h1>
+    <h1 class="title">硬件总体方案框图</h1>
   </div>
   <div class="hw-figrow">
     <img src="assets/hw/overview.png" alt="硬件总体方案框图（信号链总览）">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 15</span></div>
 </section>
 
 <!-- ================= H6 · 实测数据-R ================= -->
@@ -344,7 +337,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 15</span></div>
 </section>
 
 <!-- ================= H7 · 实测数据-C/L ================= -->
@@ -371,7 +364,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 15</span></div>
 </section>
 
 <!-- ================= H7b · 实测数据-电容容量随频率变化 ================= -->
@@ -392,7 +385,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 15</span></div>
 </section>
 
 <!-- ================= H7c · 正弦输出 ================= -->
@@ -406,7 +399,7 @@ ul.tight li::marker { color: var(--accent); }
     <figure><img src="assets/hw/sine-123hz.jpg" alt="123 Hz 正弦输出波形"><figcaption class="figcap">123 Hz 输出波形</figcaption></figure>
     <figure><img src="assets/hw/sine-1234hz.jpg" alt="1234 Hz 正弦输出波形"><figcaption class="figcap">1234 Hz 输出波形</figcaption></figure>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 15</span></div>
 </section>
 
 <!-- ================= H8 · 实测数据-波特图测量 ================= -->
@@ -418,7 +411,24 @@ ul.tight li::marker { color: var(--accent); }
   <div class="hw-figrow">
     <img src="assets/hw/bode.png" alt="双端口波特图实测结果">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 15</span></div>
+</section>
+
+<!-- ================= SW · 软件部分子标题页 ================= -->
+<section class="slide cover">
+  <div class="kicker">LCR ANALYZER · SOFTWARE</div>
+  <h1>软件部分</h1>
+  <h2>网页上位机 · 功能总览 · 电路辨识拟合</h2>
+  <div class="meta">功能简介 · 电路辨识拟合实际运行展示（自动识别等效电路 / 多候选结果对比）</div>
+  <svg class="wave" width="360" height="120" viewBox="0 0 360 120">
+    <path d="M0,60 C30,10 60,10 90,60 S150,110 180,60 S270,10 300,60 S345,105 360,60"
+          fill="none" stroke="#7dd3fc" stroke-width="2.5"/>
+    <path d="M0,60 C30,25 60,25 90,60 S150,95 180,60 S270,25 300,60 S345,92 360,60"
+          fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
+  </svg>
+  <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
+    <span>LCR Analyzer · 软件部分</span><span class="pageno">12 / 15</span>
+  </div>
 </section>
 
 <!-- ================= S1 · 软件部分功能简介 ================= -->
@@ -446,10 +456,6 @@ ul.tight li::marker { color: var(--accent); }
         <p>由扫频数据自动识别等效电路与元件参数，后两页详细展示。</p>
       </div>
       <div class="card">
-        <h3>实时监测</h3>
-        <p>测量过程中实时刷新阻抗 - 频率曲线，边测边看。</p>
-      </div>
-      <div class="card">
         <h3>实验历史</h3>
         <p>统一管理历史测量记录，支持导出与随时复查。</p>
       </div>
@@ -459,7 +465,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">12 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">13 / 15</span></div>
 </section>
 
 <!-- ================= S2 · 电路辨识拟合：自动识别等效电路 ================= -->
@@ -485,7 +491,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">13 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">14 / 15</span></div>
 </section>
 
 <!-- ================= S3 · 电路辨识拟合：多候选结果对比 ================= -->
@@ -511,7 +517,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">14 / 14</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">15 / 15</span></div>
 </section>
 
 </body>
