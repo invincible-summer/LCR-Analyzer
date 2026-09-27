@@ -2,21 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>多功能LCR测量仪 · 硬件部分与 Try1–Try3 算法理论</title>
-<link rel="stylesheet" href="assets/katex/katex.min.css">
-<script defer src="assets/katex/katex.min.js"></script>
-<script defer src="assets/katex/contrib/auto-render.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  renderMathInElement(document.body, {
-    delimiters: [
-      {left: "\\(", right: "\\)", display: false},
-      {left: "\\[", right: "\\]", display: true}
-    ],
-    throwOnError: false
-  });
-});
-</script>
+<title>多功能LCR测量仪 · 硬件部分与软件功能介绍</title>
 <style>
 :root {
   --ink: #0f172a;
@@ -80,45 +66,6 @@ h1.title { font-size: 30px; margin: 0 0 4px 0; font-weight: 700; letter-spacing:
 .slide.compact .card { padding: 10px 16px; }
 .slide.compact ul.tight li { margin: 3px 0; }
 .slide.compact .cols { gap: 20px; }
-.slide.try2-layout { font-size: 15.5px; }
-.slide.try2-layout .titlebar { margin-bottom: 12px; }
-.slide.try2-layout .cols { gap: 20px; }
-.slide.try2-layout .col { gap: 14px; }
-.slide.try2-layout .card {
-  padding: 14px 18px;
-  display: flex; flex-direction: column;
-}
-.slide.try2-layout .col:first-child .card:first-child { flex: 1.08 1 0; }
-.slide.try2-layout .col:first-child .card:last-child { flex: .92 1 0; }
-.slide.try2-layout .col:last-child {
-  justify-content: center;
-}
-.slide.try2-layout .col:last-child .card {
-  flex: 0 0 auto;
-  width: 100%;
-  padding: 11px 16px;
-}
-.slide.try2-layout .col:last-child .card h3 {
-  margin-bottom: 4px;
-}
-.slide.try2-layout .card h3 { margin-bottom: 7px; font-size: 16.5px; }
-.slide.try2-layout .fbox { padding: 9px 14px; margin: 7px 0; }
-.slide.try2-layout .fbox .katex-display,
-.slide.try2-layout .katex-display { margin: 5px 0; }
-.slide.try2-layout ul.tight {
-  margin-top: 4px; padding-left: 21px;
-  display: flex; flex-direction: column; justify-content: space-evenly; flex: 1 1 auto;
-}
-.slide.try2-layout ul.tight li { margin: 4px 0; line-height: 1.48; }
-.slide.try2-layout .col:last-child ul.tight {
-  display: block;
-  flex: none;
-  margin-top: 2px;
-}
-.slide.try2-layout .col:last-child ul.tight li {
-  margin: 3px 0;
-  line-height: 1.4;
-}
 .cols { display: flex; gap: 26px; flex: 1 1 auto; min-height: 0; }
 .col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
 .col.narrow { flex: 0.78 1 0; }
@@ -130,13 +77,6 @@ h1.title { font-size: 30px; margin: 0 0 4px 0; font-weight: 700; letter-spacing:
 }
 .card h3 { margin: 0 0 6px 0; font-size: 16.5px; color: var(--accent-dark); }
 .card h3 .no { color: var(--accent); font-weight: 800; margin-right: 6px; }
-.fbox {
-  background: var(--accent-soft); border-left: 4px solid var(--accent);
-  border-radius: 8px; padding: 10px 16px; margin: 8px 0;
-}
-.fbox .katex-display { margin: 6px 0; }
-.katex { font-size: 1.05em; }
-.katex-display { margin: 8px 0; }
 
 ul.tight { margin: 4px 0 0 0; padding-left: 22px; }
 ul.tight li { margin: 4.5px 0; }
@@ -151,35 +91,6 @@ ul.tight li::marker { color: var(--accent); }
   border-bottom: 1px dotted #93c5fd;
 }
 .cite a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-.metric-strip {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0; margin-top: 10px;
-  border: 1px solid #bfdbfe; border-radius: 10px; background: #f8fbff;
-  overflow: hidden;
-}
-.metric-pill {
-  min-width: 0; padding: 10px 12px; font-size: 12px; line-height: 1.3;
-}
-.metric-pill + .metric-pill { border-left: 1px solid #dbeafe; }
-.metric-pill .metric-head {
-  display: flex; align-items: baseline; gap: 7px; margin-bottom: 5px;
-}
-.metric-pill b { color: var(--accent-dark); font-size: 13.5px; letter-spacing: .2px; }
-.metric-pill .metric-head span { color: var(--ink2); font-weight: 600; }
-.metric-pill .metric-formula {
-  color: var(--ink); font-size: 12.6px; line-height: 1.4; margin: 3px 0 5px;
-}
-.metric-pill .metric-note { color: var(--muted); font-size: 11px; }
-.references-slide { font-size: 13px; }
-.references-slide .titlebar { margin-bottom: 11px; }
-.ref-intro { font-size: 12.5px; color: var(--muted); margin: -2px 0 8px; }
-.ref-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; flex: 1 1 auto; min-height: 0; }
-.references {
-  margin: 0; padding-left: 25px; font-size: 10.5px; line-height: 1.24;
-}
-.references li { margin: 0 0 5px 0; padding-left: 2px; break-inside: avoid; }
-.references a { color: var(--accent-dark); text-decoration: none; overflow-wrap: anywhere; }
-.references em { color: var(--ink2); }
 .note {
   background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px;
   padding: 8px 14px; font-size: 14.5px; color: #713f12;
@@ -191,38 +102,16 @@ ul.tight li::marker { color: var(--accent); }
   background: var(--accent-soft); color: var(--accent-dark); border: 1px solid #bfdbfe;
   border-radius: 999px; padding: 3px 14px; font-size: 14px; font-weight: 600; white-space: nowrap;
 }
-.flowline { display: flex; align-items: center; gap: 0; flex-wrap: nowrap; }
-.flowstep {
-  background: #fff; border: 1.5px solid var(--accent); color: var(--accent-dark);
-  border-radius: 10px; padding: 7px 13px; font-size: 14.5px; font-weight: 600; white-space: nowrap;
-}
-.flowarrow { color: var(--accent); font-size: 19px; padding: 0 7px; font-weight: 700; }
 
-table.data { border-collapse: collapse; width: 100%; font-size: 15px; }
-table.data th {
-  background: #f1f5f9; color: var(--ink); font-weight: 700;
-  border-bottom: 2px solid #cbd5e1; padding: 7px 10px; text-align: left;
+.sw-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr; gap: 14px; flex: 1 1 auto; min-height: 0;
 }
-table.data td { border-bottom: 1px solid var(--line); padding: 6.5px 10px; }
-table.data tr:last-child td { border-bottom: none; }
-table.data td.num, table.data th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.hl { color: var(--accent-dark); font-weight: 700; }
-
-img.fig { width: 100%; object-fit: contain; border-radius: 8px; }
-.figwrap { display: flex; align-items: center; justify-content: center; min-height: 0; }
-.tag {
-  display: inline-block; font-size: 12.5px; font-weight: 700; border-radius: 6px;
-  padding: 1px 9px; margin-right: 7px; vertical-align: 1px;
-}
-.tag.b { background: #dbeafe; color: #1e40af; }
-.tag.g { background: #d1fae5; color: #065f46; }
-.tag.o { background: #ffedd5; color: #9a3412; }
-.tag.r { background: #fee2e2; color: #991b1b; }
-code.mono {
-  font-family: "Cascadia Code", Consolas, monospace; font-size: 14px;
-  background: #f1f5f9; border-radius: 5px; padding: 1px 6px; color: #0f3a5f;
-}
-.twocol-eq { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 26px; }
+.sw-grid .card { display: flex; flex-direction: column; padding: 16px 20px; }
+.sw-grid .card h3 { margin-bottom: 8px; }
+.sw-grid .card p { margin: 0; color: var(--ink2); font-size: 15px; line-height: 1.62; text-align: justify; }
+.sw-grid .card.hl { background: var(--accent-soft); border-color: #93c5fd; }
+.sw-grid .card.hl h3 { color: var(--accent-dark); }
 
 /* ---------- hardware section ---------- */
 .slide.hw-intro .card {
@@ -315,12 +204,6 @@ code.mono {
 .cover .kicker { color: #7dd3fc; }
 .cover h1 { font-size: 52px; margin: 10px 0 14px; font-weight: 800; letter-spacing: 1px; }
 .cover h2 { font-size: 24px; font-weight: 500; color: #bae6fd; margin: 0 0 34px; }
-.cover .coverformula {
-  background: rgba(255,255,255,.08); border: 1px solid rgba(125,211,252,.35);
-  border-radius: 14px; padding: 18px 30px; display: inline-block;
-  font-size: 20px; backdrop-filter: blur(2px);
-}
-.cover .coverformula .katex { color: #e0f2fe; font-size: 1.5em; }
 .cover .meta { margin-top: 46px; font-size: 15px; color: #93c5fd; line-height: 1.9; }
 .cover .wave { position: absolute; right: 70px; bottom: 60px; opacity: .5; }
 </style>
@@ -340,7 +223,7 @@ code.mono {
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 25</span>
+    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 14</span>
   </div>
 </section>
 
@@ -355,7 +238,7 @@ code.mono {
       <p>本作品是一个LCR测量仪，可以在10Hz-10kHz内几乎任意频点测量待测元件的复阻抗并自动计算串并联等效阻容感。此外还支持双端口网络幅频特性和相频特性测量，以及10Hz-10kHz正弦波发生器功能。本作品可以将测量得到的数据通过BLE发送到专用网页上进行可视化展示，同时网页也具备单端口网络拟合功能，可以通过多频点扫频数据拟合出等效电路结构。</p>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 14</span></div>
 </section>
 
 <!-- ================= H3 · 功能介绍（整机） ================= -->
@@ -374,7 +257,7 @@ code.mono {
       <div class="anno rev" style="left:-13.5%; top:54.3%; transform:translate(0,-50%)"><i></i>编码器</div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 14</span></div>
 </section>
 
 <!-- ================= H4 · 功能介绍（界面与功能） ================= -->
@@ -406,7 +289,7 @@ code.mono {
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 14</span></div>
 </section>
 
 <!-- ================= HD · 硬件部分子标题页 ================= -->
@@ -422,7 +305,7 @@ code.mono {
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 25</span>
+    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 14</span>
   </div>
 </section>
 
@@ -435,7 +318,7 @@ code.mono {
   <div class="hw-figrow">
     <img src="assets/hw/overview.png" alt="硬件总体方案框图（信号链总览）">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 14</span></div>
 </section>
 
 <!-- ================= H6 · 实测数据-R ================= -->
@@ -461,7 +344,7 @@ code.mono {
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 14</span></div>
 </section>
 
 <!-- ================= H7 · 实测数据-C/L ================= -->
@@ -488,7 +371,7 @@ code.mono {
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 14</span></div>
 </section>
 
 <!-- ================= H7b · 实测数据-电容容量随频率变化 ================= -->
@@ -509,7 +392,7 @@ code.mono {
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 14</span></div>
 </section>
 
 <!-- ================= H7c · 正弦输出 ================= -->
@@ -523,7 +406,7 @@ code.mono {
     <figure><img src="assets/hw/sine-123hz.jpg" alt="123 Hz 正弦输出波形"><figcaption class="figcap">123 Hz 输出波形</figcaption></figure>
     <figure><img src="assets/hw/sine-1234hz.jpg" alt="1234 Hz 正弦输出波形"><figcaption class="figcap">1234 Hz 输出波形</figcaption></figure>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 14</span></div>
 </section>
 
 <!-- ================= H8 · 实测数据-波特图测量 ================= -->
@@ -535,505 +418,100 @@ code.mono {
   <div class="hw-figrow">
     <img src="assets/hw/bode.png" alt="双端口波特图实测结果">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 14</span></div>
 </section>
 
-<!-- ================= 1 · cover ================= -->
-<section class="slide cover">
-  <div class="kicker">LCR ANALYZER · SOFTWARE / ALGORITHM THEORY</div>
-  <h1>LCR 阻抗测量与电路辨识</h1>
-  <h2>软件部分 · Try1–Try3：统一前向模型、图搜索与参数优化</h2>
-  <div class="coverformula">
-    给定扫频测量 \(Z(f_k)\)，寻找电路图 \(G\) 与参数 \(\theta\)，使
-    \(\;Z_{\text{calc}}(f_k)=b^{\mathsf T}Y^{-1}(f_k)\,b\;\) 逼近测量
-  </div>
-  <div class="meta">
-    基于 AlgorithmLcr v4.1.2 共享 C++/Eigen 核心（原生 CLI 与浏览器 WASM 同源）<br>
-    所有拟合图与数字均来自本仓库对四组真实测量数据（10 Hz–10 kHz）的实际运行
-  </div>
-  <svg class="wave" width="360" height="120" viewBox="0 0 360 120">
-    <path d="M0,60 C30,10 60,10 90,60 S150,110 180,60 S270,10 300,60 S345,105 360,60"
-          fill="none" stroke="#7dd3fc" stroke-width="2.5"/>
-    <path d="M0,60 C30,25 60,25 90,60 S150,95 180,60 S270,25 300,60 S345,92 360,60"
-          fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
-  </svg>
-  <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">12 / 25</span>
-  </div>
-</section>
-
-<!-- ================= 2 · problem ================= -->
+<!-- ================= S1 · 软件部分功能简介 ================= -->
 <section class="slide">
   <div class="titlebar">
-    <div class="kicker">共用核 · 逆问题定义</div>
-    <h1 class="title">共用核 I：问题定义与三档先验</h1>
+    <div class="kicker">软件部分 · 功能简介</div>
+    <h1 class="title">软件部分功能简介</h1>
   </div>
-  <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>测量数据与可观测量</h3>
-        <ul class="tight">
-          <li>对数扫频得到离散复阻抗序列 \(\{(f_k,\,Z_k)\}_{k=1..M}\)，10 Hz–10 kHz。<sup class="cite"><a href="#ref-1" title="IEEE 1057-2017">[1]</a></sup></li>
-          <li>唯一可观测的是<b>端口行为</b> \(Z(s)\)；内部结构需要靠"假设—计算—比较"的逆问题求解。</li>
-        </ul>
-        <div class="small" style="margin-top:5px">测量链理论来源：已知频率正弦拟合参照<sup class="cite"><a href="#ref-1">[1]</a></sup>；一端口 OSL 系统误差模型参照<sup class="cite"><a href="#ref-17">[17]</a></sup>。</div>
-      </div>
-      <div class="card">
-        <h3>三种引擎对应同一逆问题的三档先验</h3>
-        <table class="data">
-          <tr><th>引擎</th><th>已知</th><th>未知</th><th>核心动作</th></tr>
-          <tr><td><b>Try1</b></td><td>仅测量（可选器件数）</td><td>数量·类型·接线·数值</td><td>枚举规范 SP 树，逐模型拟合</td></tr>
-          <tr><td><b>Try2</b></td><td>器件类型·数量·数值</td><td>接线（二端多重图）</td><td>枚举全部非同构图，逐图评价</td></tr>
-          <tr><td><b>Try3</b></td><td>拓扑·边类型</td><td>元件数值</td><td>归约 + 多起点局部拟合 + 可辨识性诊断</td></tr>
-        </table>
-        <div class="small" style="margin-top:6px">内部变体：Try2.5（已知类型数量、宽箱拟合）。</div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="note blue">所有候选电路均代入<b>同一前向方程</b>计算 \(Z(f)\)，并与测量数据统一比较；这是三个引擎共享的数学骨架。</div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">13 / 25</span></div>
-</section>
-
-<!-- ================= 3 · circuit as graph ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">共用核 · 前向模型</div>
-    <h1 class="title">共用核 II：电路图模型与元件表示</h1>
-  </div>
-  <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>图模型定义</h3>
-        <ul class="tight">
-          <li><b>顶点</b> = 电气连接点；<b>边</b> = 一个元件；端口固定为节点 0 / 1。</li>
-          <li>允许<b>重边</b>（同节点对多个元件 = 并联），不允许自环；无互感、无受控源。</li>
-          <li>电感绑定直流电阻：\(L{+}R_d\) 是一个器件、最多两个参数；\(R_d\ge 0\) 可精确为零。</li>
-        </ul>
-      </div>
-      <div class="fbox">
-        取 \(s=j2\pi f\)，元件阻抗与导纳：
-        \[
-        z_R=R,\qquad z_C=\frac{1}{sC},\qquad z_L=R_d+sL,
-        \qquad y_e=\frac{1}{z_e}
-        \]
-      </div>
-      <div class="note">有了这一层抽象，"搜索电路结构"就变成<b>搜索图</b>：Try1/Try2 的离散部分都在图的组合空间上进行。</div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">14 / 25</span></div>
-</section>
-
-<!-- ================= 4 · stamp ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">共用核 · 前向模型</div>
-    <h1 class="title">共用核 III：节点导纳矩阵装配</h1>
-  </div>
-  <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>支路导纳 Stamp（导纳 \(y\)，端点 \(u,v\)）</h3>
-        <div class="fbox">
-          \[
-          Y_{uu}\mathrel{+}=y,\qquad Y_{vv}\mathrel{+}=y,\qquad
-          Y_{uv}\mathrel{-}=y,\qquad Y_{vu}\mathrel{-}=y
-          \]
-        </div>
-        <ul class="tight">
-          <li>地（端口 0）电压恒为 0：<b>不进入未知量</b>，只盖非地端的对角元。</li>
-          <li>写成矩阵语言：\(Y(s)=\sum_e y_e(s)\,a_e a_e^{\mathsf T}\)，其中 \(a_e\) 在 \(u\) 处 \(+1\)、\(v\) 处 \(-1\)——<b>每加入一个元件，等价于向 \(Y\) 累加一个秩 1 矩阵</b>。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>最小算例：节点 1、2 之间的一条电阻 \(R\)，\(g=1/R\)</h3>
-        \[
-        Y=\begin{bmatrix} g & -g\\ -g & g\end{bmatrix}
-        \]
-      </div>
-    </div>
-    <div class="col narrow">
-      <div class="card" style="flex:1">
-        <h3>节点导纳矩阵的适用性</h3>
-        <ul class="tight">
-          <li>KCL 的直接离散形式，组装是<b>局部、可加</b>的。</li>
-          <li>串并联公式只是它在特殊拓扑下的化简结果；节点法天然处理<b>桥式、重边、任意小型图</b>——这正是 Try2 能搜索桥式网络的原因。</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">15 / 25</span></div>
-</section>
-
-<!-- ================= 5 · Z = b'Y^-1 b ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">共用核 · 前向模型</div>
-    <h1 class="title">共用核 IV：端口阻抗前向求解 \(Z=b^{\mathsf T}Y^{-1}b\)</h1>
-  </div>
-  <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>四步推导（单位电流激励）<sup class="cite"><a href="#ref-2" title="Ho, Ruehli & Brennan, 1975">[2]</a></sup></h3>
-        <ul class="tight">
-          <li>端口 0 接地；向端口 1 强制注入 \(1\,\mathrm{A}\)：右端 \(b=e_1\)（端口 1 对应的单位向量）。</li>
-          <li>KCL 矩阵形式：\(Yv=b\)，解得 \(v=Y^{-1}b\)。</li>
-          <li>因为 \(I_{\text{port}}=1\,\mathrm{A}\)，端口阻抗就是端口电压：\(Z=V_1\)。</li>
-        </ul>
-        <div class="fbox">
-          \[
-          Z \;=\; V_1 \;=\; b^{\mathsf T}v \;=\; b^{\mathsf T}Y^{-1}b
-          \]
-        </div>
-      </div>
-      <div class="card">
-        <h3>节点法验证：\(R\)–\(C\) 串联算例</h3>
-        未知节点 \(\{1,2\}\)，\(g=1/R,\;y_C=j\omega C\)：
-        \[
-        Y=\begin{bmatrix} g & -g\\ -g & g+y_C\end{bmatrix},\quad
-        b=\begin{bmatrix}1\\0\end{bmatrix}
-        \;\Rightarrow\;
-        Z=\frac{g+y_C}{g\,y_C}=R+\frac{1}{j\omega C}\;\checkmark
-        \]
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">16 / 25</span></div>
-</section>
-
-<!-- ================= 6 · residual & metrics ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">共用核 · 拟合目标与评价</div>
-    <h1 class="title">共用核 V：拟合误差与模型选择指标</h1>
-  </div>
-  <div class="col">
+  <div style="display:flex; flex-direction:column; gap:16px; flex:1 1 auto; min-height:0">
     <div class="card">
-      <h3>白化相对残差（默认噪声模型）</h3>
-      <div class="fbox">
-        \[
-        z_{\text{floor}}=\max\!\bigl(10^{-15},\;10^{-9}\,\mathrm{median}|Z_k|\bigr),\qquad
-        r_k=\frac{\begin{bmatrix}\mathrm{Re}(\hat Z_k-Z_k)\\[2pt] \mathrm{Im}(\hat Z_k-Z_k)\end{bmatrix}}{\max(|Z_k|,\,z_{\text{floor}})}
-        \]
+      <h3>专用网页上位机</h3>
+      <p style="margin:0; text-align:justify; line-height:1.7">仪器完成测量后，数据可通过蓝牙（BLE）一键导入专用网页；全部计算均在浏览器本地完成，无需安装软件。网页与仪器配合使用，覆盖从查看测量结果到识别电路的完整流程。</p>
+    </div>
+    <div class="sw-grid">
+      <div class="card">
+        <h3>时域分析</h3>
+        <p>按频点查看采样波形与频谱，读取该频点的阻抗测量结果。</p>
       </div>
-      <ul class="tight">
-        <li>目标函数 \(J=\sum_k\|r_k\|^2\)（相对加权：\(1\,\mathrm{k\Omega}\) 与 \(1\,\mathrm{\Omega}\) 的数据同等对待；近零保护防除零）。</li>
-        <li>可选逐点协方差做 GLS；下方三个指标统一用于拟合质量与模型比较。</li>
-      </ul>
-
-      <div class="metric-strip">
-        <div class="metric-pill">
-          <div class="metric-head"><b>WRMSE</b><span>整体拟合误差</span></div>
-          <div class="metric-formula">\(\displaystyle \mathrm{WRMSE}=\sqrt{\frac{1}{M}\sum_{k=1}^{M}\|r_k\|_2^2}=\sqrt{J/M}\)</div>
-          <div class="metric-note">越小越好</div>
-        </div>
-        <div class="metric-pill">
-          <div class="metric-head"><b>MAXREL</b><span>最坏频点误差</span></div>
-          <div class="metric-formula">\(\displaystyle \mathrm{MAXREL}=\max_{1\le k\le M}\|r_k\|_2\)</div>
-          <div class="metric-note">越小越好</div>
-        </div>
-        <div class="metric-pill">
-          <div class="metric-head"><b>AICc</b><span>复杂度惩罚</span><sup class="cite"><a href="#ref-13">[13]</a></sup><sup class="cite"><a href="#ref-14">[14]</a></sup></div>
-          <div class="metric-formula">\(\displaystyle \mathrm{AICc}=n\log\!\bigl(\max(J/n,10^{-300})\bigr)+2k+\frac{2k(k+1)}{n-k-1}\)</div>
-          <div class="metric-note">\(n=2M,\;k=p+1\)；同一数据与似然假设下比较，越小越好</div>
-        </div>
+      <div class="card">
+        <h3>扫频 Bode</h3>
+        <p>绘制幅频 / 相频特性曲线，直观展示元件与网络的频率响应。</p>
       </div>
-
-      <div class="note green" style="margin-top:10px">
-        这些指标对所有引擎统一：Try1 用它做模型选择，Try2 用它给接线排序，Try3 用它报告单拓扑拟合质量。
+      <div class="card hl">
+        <h3>电路辨识拟合</h3>
+        <p>由扫频数据自动识别等效电路与元件参数，后两页详细展示。</p>
+      </div>
+      <div class="card">
+        <h3>实时监测</h3>
+        <p>测量过程中实时刷新阻抗 - 频率曲线，边测边看。</p>
+      </div>
+      <div class="card">
+        <h3>实验历史</h3>
+        <p>统一管理历史测量记录，支持导出与随时复查。</p>
+      </div>
+      <div class="card">
+        <h3>使用文档</h3>
+        <p>内置说明文档，操作方法与数据格式随查随用。</p>
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">17 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">12 / 14</span></div>
 </section>
 
-<!-- ================= 7 · try3 part 1 ================= -->
+<!-- ================= S2 · 电路辨识拟合：自动识别等效电路 ================= -->
 <section class="slide">
   <div class="titlebar">
-    <div class="kicker">Try3 · 已知拓扑的参数估计</div>
-    <h1 class="title">Try3（I）：元件参数计算——参数化、初值与多起点</h1>
+    <div class="kicker">软件部分 · 电路辨识拟合</div>
+    <h1 class="title">电路辨识拟合：自动识别等效电路</h1>
   </div>
   <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>优化坐标：数量级差异的尺度化处理</h3>
+    <div class="col" style="flex:0 0 34%">
+      <div class="card" style="flex:1 1 auto; display:flex; flex-direction:column; justify-content:center">
         <ul class="tight">
-          <li>正参数 R/L/C 用对数坐标 \(x=\log_{10}q\)，链式因子 \(\ln 10\cdot q\)；跨 10 个数量级的搜索变成均匀空间。</li>
-          <li>DCR 用缩放线性非负坐标 \(x=R_d/z_{\text{scale}}\)，\(z_{\text{scale}}=\max(10^{-9},\mathrm{median}|Z|)\)。</li>
-          <li>箱约束显式投影：默认 \(R\in[10^{-3},10^{7}]\,\Omega\)、\(L\in[10^{-10},10]\,\mathrm{H}\)、\(C\in[10^{-13},10^{-3}]\,\mathrm{F}\)、\(R_d\in[0,10^{7}]\,\Omega\)。</li>
+          <li>把扫频测量数据交给网页——CSV 上传或蓝牙一键导入，软件即可<b>自动识别</b>待测元件的等效电路。</li>
+          <li>结果直接给出<b>电路连接图</b>与每个元件的<b>参数值</b>：如右图中的 R1 = 1 kΩ、C1 = 1.44 µF、L1 = 115 mH（含直流电阻）、R2 = 277 Ω。</li>
+          <li>同时绘制 <b>|Z|(f)、∠Z(f) 与奈奎斯特图</b>：测量数据与识别电路的理论曲线叠加显示，吻合程度一目了然。</li>
         </ul>
-      </div>
-      <div class="card">
-        <h3>物理尺度初值构造</h3>
-        <div class="fbox">
-          \[
-          \omega_c=2\pi\sqrt{f_{\min}f_{\max}},\qquad
-          R_0=z_{\text{scale}},\quad L_0=\frac{z_{\text{scale}}}{\omega_c},\quad
-          C_0=\frac{1}{z_{\text{scale}}\,\omega_c},\quad R_{d,0}=0.1\,z_{\text{scale}}
-          \]
-        </div>
-        <div class="small">"中位阻抗 × 频带几何中心"给出各类型元件的正确量级——如 \(|Z|\sim1\,\mathrm{k\Omega}\)、\(f_c\sim1\,\mathrm{kHz}\) 时 \(C_0\sim0.16\,\mu\mathrm{F}\)。</div>
+        <div class="note green" style="margin-top:14px">识别出的电路与测量曲线高度重合，可作为判断元件真实构成的可信参考。</div>
       </div>
     </div>
-    <div class="col narrow">
-      <div class="card" style="flex:1">
-        <h3>确定性多起点</h3>
-        <ul class="tight">
-          <li>默认 <b>16 个起点 × 160 轮</b>，随机种子固定 1——结果完全可复现。</li>
-          <li>起点 0 = 物理尺度初值；其余在对数坐标上加 \(\pm2.5\) 个数量级的均匀抖动（容差模式则在箱内均匀采样）。</li>
-          <li>DCR 每 4 个起点强制一次 0 初值（零 DCR 是常见真相）。</li>
-          <li>取全部起点的最优；"多少起点收敛到同一解"（agreeingStarts）本身是诊断量。</li>
-        </ul>
+    <div class="col" style="flex:1 1 0">
+      <div class="hw-figcard" style="flex:1 1 auto; padding:10px 12px">
+        <img src="assets/figs/fit-ui-circuit.png" alt="电路辨识拟合：自动识别出的等效电路与 |Z| / 相位 / 奈奎斯特对比曲线">
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">18 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">13 / 14</span></div>
 </section>
 
-<!-- ================= 8 · try3 part 2 ================= -->
+<!-- ================= S3 · 电路辨识拟合：多候选结果对比 ================= -->
 <section class="slide">
   <div class="titlebar">
-    <div class="kicker">Try3 · 已知拓扑的参数估计</div>
-    <h1 class="title">Try3（II）：元件参数计算——解析灵敏度与 Levenberg–Marquardt</h1>
+    <div class="kicker">软件部分 · 电路辨识拟合</div>
+    <h1 class="title">电路辨识拟合：多候选结果对比</h1>
   </div>
   <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>解析 Jacobian：对 \(Yv=b\) 微分（普通转置，非共轭）</h3>
-        <div class="fbox">
-          \[
-          \frac{\partial Z}{\partial q_e}=-\frac{\partial y_e}{\partial q_e}\,\bigl(V_u-V_v\bigr)^{2},
-          \qquad
-          \partial_R y=-\tfrac{1}{R^2},\;\; \partial_C y=s,\;\;
-          \partial_L y=\tfrac{-s}{(R_d+sL)^2},\;\; \partial_{R_d} y=\tfrac{-1}{(R_d+sL)^2}
-          \]
-        </div>
+    <div class="col" style="flex:0 0 34%">
+      <div class="card" style="flex:1 1 auto; display:flex; flex-direction:column; justify-content:center">
         <ul class="tight">
-          <li>当元件两端电压差 \(\approx 0\) 时，\(\partial Z/\partial q\approx 0\)：端口响应对该参数灵敏度极低，因此难以由端口数据辨识（<b>可辨识性</b>的根源）。</li>
+          <li>同一组测量数据往往对应<b>多种可能的等效形式</b>：软件一次给出多个候选电路，并按与测量数据的<b>吻合程度自动排序</b>（右图<span style="white-space:nowrap">Top-5</span>）。</li>
+          <li>每个候选均列出器件数、参数个数与误差指标，<b>点击即可切换</b>查看对应的电路图与曲线对比。</li>
+          <li>结合对待测元件的实际了解，即可从候选中确认真实结构；整个识别过程<b>数秒内完成</b>。</li>
         </ul>
-      </div>
-      <div class="card">
-        <h3>阻尼最小二乘步（增广方程，SVD 直接求解）<sup class="cite"><a href="#ref-10" title="Marquardt, 1963">[10]</a></sup></h3>
-        <div class="fbox">
-          \[
-          \min_{\Delta}\left\|
-          \begin{bmatrix} J\\ \sqrt{\lambda}\,D\end{bmatrix}\Delta+
-          \begin{bmatrix} r\\ 0\end{bmatrix}
-          \right\|_2,
-          \qquad D_{jj}=\max\!\bigl(10^{-8},\|J_{:j}\|\bigr)
-          \]
-        </div>
-        <ul class="tight">
-          <li>JacobiSVD 解增广最小二乘，<b>不形成法方程</b> \(J^{\mathsf T}J\)（避免平方条件数）。</li>
-          <li>信赖域：单坐标最大步长 2（对数坐标下约 100 倍），越界投影回箱。</li>
-          <li>\(\lambda\) 自适应：初始 \(10^{-3}\)，成功 \(/3\)、失败 \(\times 10\)；\(\lambda>10^{14}\) 判停滞。</li>
-          <li>终止：缩放梯度 \(&lt;10^{-10}\) / 代价 \(&lt;10^{-24}\) / 增益微小 / 迭代上限——状态显式输出。</li>
-        </ul>
+        <div class="note green" style="margin-top:14px">排名第一的候选误差最小、器件个数合理，通常即为最可信的等效电路。</div>
       </div>
     </div>
-    <div class="col narrow">
-      <div class="card" style="flex:1">
-        <h3>单次 LM 迭代流程</h3>
-        <div class="flowline" style="flex-direction:column; align-items:stretch; gap:6px">
-          <div class="flowstep">当前参数 \(x\) → 组装 \(Y(f_k)\)</div>
-          <div class="flowarrow" style="align-self:center">↓</div>
-          <div class="flowstep">解 \(Yv=b\)，得 \(Z\)、残差 \(r\)、Jacobian \(J\)</div>
-          <div class="flowarrow" style="align-self:center">↓</div>
-          <div class="flowstep">SVD 解 LM 步 → 投影 → 试探</div>
-          <div class="flowarrow" style="align-self:center">↓</div>
-          <div class="flowstep">更优则接受、\(\lambda\!/3\)；否则 \(\lambda\times10\)</div>
-        </div>
-        <div class="small" style="margin-top:8px">全部频点共用同一次 Jacobian 装配；病态求值（Reject 级）直接判该起点数值失败，不产出假结果。</div>
+    <div class="col" style="flex:1 1 0">
+      <div class="hw-figcard" style="flex:1 1 auto; padding:10px 12px">
+        <img src="assets/figs/fit-ui-candidates.png" alt="电路辨识拟合：候选电路排序 Top-5 与切换查看">
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">19 / 25</span></div>
-</section>
-
-<!-- ================= 9 · try2 part 1 ================= -->
-<section class="slide try2-layout">
-  <div class="titlebar">
-    <div class="kicker">Try2 · 已知器件的拓扑搜索</div>
-    <h1 class="title">Try2：拓扑搜索——完整枚举与候选评价</h1>
-  </div>
-  <div class="cols">
-    <div class="col">
-      <div class="card">
-        <h3>节点数范围</h3>
-        <div class="fbox">
-          \[
-          \text{连通且含两端口}\;\Longleftrightarrow\;
-          2\le V\le E+1
-          \qquad\bigl(E\ge V-1\bigr)
-          \]
-        </div>
-        <ul class="tight">
-          <li>\(V\) 个节点的连通图至少 \(V-1\) 条边；两个端口本身就要 2 个节点。</li>
-          <li>固定 \(V\) 后：\(\binom{V}{2}\) 个<b>节点对槽位</b>，\(E\) 条边 = 槽位上大小为 \(E\) 的多重集，例如 \(V{=}3\)：\(m_{01}+m_{02}+m_{12}=E\)。</li>
-          <li>DFS 取槽位时允许重复取同一槽 → <b>天然支持并联重边</b>；不允许自环。</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>固定参数下的拓扑比较</h3>
-        <ul class="tight">
-          <li>每个候选图在<b>全部频点</b>上前向求值（0 个自由参数），按共同 RSS 目标排序。</li>
-          <li>Top-K：按观测频点数值等价（默认容差 \(10^{-6}\)）聚类，每类给一个代表元。</li>
-          <li><b>条件最优证书</b>：枚举完整 + 无数值失败 ⇔ 可声明"该有限空间的全局最优"；连续参数拟合则永远只是局部方法。</li>
-        </ul>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <h3>重复结构消除与活动性过滤：规范化（canonicalization）<sup class="cite"><a href="#ref-16" title="McKay & Piperno, 2014">[16]</a></sup></h3>
-        <ul class="tight">
-          <li>结构过滤：无孤立节点；<b>活动性</b>检查（所有元件必须端口连通，完整割点死区直接排除）。</li>
-          <li>内部节点重命名与互易端口交换不改变电路 → 枚举全部置换，取<b>字典序最小签名</b>作为"身份证"去重（同一电路只算一次）。</li>
-          <li>器件赋值：把已知的 \(E\) 个器件排到边上，跳过相同器件的重复排列，带值图再做一次规范化去重。</li>
-          <li>支持 \(E\le 8\)，包含桥式与重边；组合数随 \(E\) 急增（\(E{=}7\) 已到百万级）。</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">20 / 25</span></div>
-</section>
-
-<!-- ================= 10 · try1 part 1 ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">Try1 · 无先验结构的模型发现</div>
-    <h1 class="title">Try1：结构发现——规范串并联（SP）树枚举</h1>
-  </div>
-  <div class="cols">
-    <div class="col wide">
-      <div class="card">
-        <h3>假设空间：SP 表达式树<sup class="cite"><a href="#ref-18" title="Duffin, 1965">[18]</a></sup><sup class="cite"><a href="#ref-19" title="He & Yesha, 1987">[19]</a></sup></h3>
-        <ul class="tight">
-          <li>叶子 = 器件 R / C / L(+DCR)；内部节点只有 SER（串联）与 PAR（并联）两种运算。</li>
-          <li>逐层递归构造：\(n\) 个器件的树由"器件数拆分 + 交替运算"组合而成，子树类型必须与父节点不同（S 下不再套 S），深度 ≤ maxDepth。</li>
-        </ul>
-        <div class="fbox">
-          \[
-          Z_S=\sum_i Z_i,\qquad
-          Z_P=\Bigl(\sum_i \frac{1}{Z_i}\Bigr)^{-1}
-          \quad\text{——树自叶向根即可算 } Z
-          \]
-        </div>
-      </div>
-      <div class="card" style="padding:11px 16px; font-size:15px">
-        <h3>规范化规则：等价 SP 结构去重</h3>
-        <ul class="tight">
-          <li>同运算扁平化：\(S(S(a,b),c)\to S(a,b,c)\)；子树按规范键排序。</li>
-          <li>不生成可直接归约的结构：SER 下同类叶、SER 下 \(R{+}L\)（折入 DCR）；PAR 下同类 R/C 不生成，但<b>保留并联 L</b>（不同 DCR 时间常数不可合并）。</li>
-        </ul>
-      </div>
-      <div class="note green">每棵 SP 树展开为图（SER 链生成内部节点）后，进入<b>同一个</b> \(Z=b^{\mathsf T}Y^{-1}b\) 前向求值与共享拟合，从而与 Try2/Try3 共用统一计算链路。</div>
-    </div>
-    <div class="col narrow">
-      <div class="figwrap" style="height:100%; align-items:center">
-        <img class="fig" alt="SP 表达式树示例" style="max-height:490px; width:100%; object-fit:contain" src="data:image/webp;base64,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">
-      </div>
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">21 / 25</span></div>
-</section>
-
-<!-- ================= 11 · try1 sample ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">Validation · Try1</div>
-    <h1 class="title">Try1 拟合样例：未知结构搜索结果</h1>
-  </div>
-  <div class="card" style="flex:1; display:flex; align-items:center; justify-content:center; padding:12px 14px;">
-    <img alt="Try1 拟合样例截图" style="width:100%; max-height:535px; object-fit:contain; border-radius:8px;" src="assets/figs/fit-try1-20260927.png">
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">22 / 25</span></div>
-</section>
-
-<!-- ================= 12 · try3 sample ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">Validation · Try3</div>
-    <h1 class="title">Try3 拟合样例：已知拓扑的参数拟合</h1>
-  </div>
-  <div class="card" style="flex:1; display:flex; align-items:center; justify-content:center; padding:12px 14px;">
-    <img alt="Try3 拟合样例截图" style="width:100%; max-height:535px; object-fit:contain; border-radius:8px;" src="assets/figs/fit-try3-20260927.png"">
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">23 / 25</span></div>
-</section>
-
-<!-- ================= 13 · summary ================= -->
-<section class="slide">
-  <div class="titlebar">
-    <div class="kicker">共用核 · Try1–Try3 总结</div>
-    <h1 class="title">总结：共用核与 Try1–Try3</h1>
-  </div>
-  <div style="display:flex; flex-direction:column; gap:16px; flex:1">
-    <div class="card">
-      <h3>统一算法管线（三个引擎共享同一数学实现）</h3>
-      <div style="display:flex; flex-direction:column; gap:8px">
-        <div class="flowline" style="justify-content:center">
-          <div class="flowstep">测量 \(Z(f_k)\)</div><div class="flowarrow">→</div>
-          <div class="flowstep">候选 \((G,\theta)\)</div><div class="flowarrow">→</div>
-          <div class="flowstep">stamp 组装 \(Y(s)\)</div><div class="flowarrow">→</div>
-          <div class="flowstep">\(Z_{\text{calc}}=b^{\mathsf T}Y^{-1}b\)</div><div class="flowarrow">→</div>
-        </div>
-        <div class="flowline" style="justify-content:center">
-          <div class="flowstep">白化残差 \(r_k\)</div><div class="flowarrow">→</div>
-          <div class="flowstep">\(J=\sum\|r_k\|^2\)</div><div class="flowarrow">→</div>
-          <div class="flowstep">搜索 / LM 优化</div><div class="flowarrow">→</div>
-          <div class="flowstep">分层排序 Top-K</div>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <h3>三种引擎概览</h3>
-      <ul class="tight">
-        <li><b>Try1</b>：枚举规范 SP 树，同时搜索结构、类型与元件参数。</li>
-        <li><b>Try2</b>：器件集合已知，完整枚举非同构多重图并对候选拓扑统一评价。</li>
-        <li><b>Try3</b>：拓扑已知，经过归约与解析灵敏度 LM 拟合元件参数，并输出可辨识性诊断。</li>
-      </ul>
-    </div>
-    <div class="note blue" style="text-align:center;font-size:15.5px">
-      对每个候选电路均采用统一评价流程：注入 1 A 测试电流 → 解 \(Yv=b\) → 得到 \(Z=V_1\) → 与测量数据比较。
-    </div>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">24 / 25</span></div>
-</section>
-
-<!-- ================= 14 · references ================= -->
-<section class="slide references-slide" id="references">
-  <div class="titlebar">
-    <div class="kicker">References</div>
-    <h1 class="title">参考文献与技术标准</h1>
-  </div>
-  <div class="ref-grid">
-    <ol class="references">
-      <li id="ref-1">IEEE Std 1057-2017, <em>IEEE Standard for Digitizing Waveform Recorders</em>, Annex A: three-parameter known-frequency sine fitting.</li>
-      <li id="ref-2">C.-W. Ho, A. E. Ruehli, P. A. Brennan, “The modified nodal approach to network analysis,” <em>IEEE Trans. Circuits and Systems</em>, 22(6), 504–509, 1975. <a href="https://doi.org/10.1109/TCS.1975.1084079">doi:10.1109/TCS.1975.1084079</a></li>
-      <li id="ref-3">O. Brune, “Synthesis of a Finite Two-terminal Network whose Driving-point Impedance is a Prescribed Function of Frequency,” <em>J. Mathematics and Physics</em>, 10, 191–236, 1931. <a href="https://doi.org/10.1002/sapm1931101191">doi:10.1002/sapm1931101191</a></li>
-      <li id="ref-4">R. J. Duffin, R. Bott, “Impedance synthesis without use of transformers,” <em>J. Applied Physics</em>, 20(8), 816, 1949. <a href="https://doi.org/10.1063/1.1698532">doi:10.1063/1.1698532</a></li>
-      <li id="ref-5">R. M. Foster, “A Reactance Theorem,” <em>Bell System Technical Journal</em>, 3, 259–267, 1924.</li>
-      <li id="ref-6">W. Cauer, classical works on realization of prescribed frequency-dependent impedances and ladder synthesis, 1926–1927; see also Brune [3].</li>
-      <li id="ref-7">S. Chaiken, “A Combinatorial Proof of the All Minors Matrix Tree Theorem,” <em>SIAM J. Algebraic Discrete Methods</em>, 3(3), 319–329, 1982. <a href="https://doi.org/10.1137/0603033">doi:10.1137/0603033</a></li>
-      <li id="ref-8">H. Whitney, “2-Isomorphic Graphs,” <em>American Journal of Mathematics</em>, 55(1), 245–254, 1933. <a href="https://doi.org/10.2307/2371127">doi:10.2307/2371127</a></li>
-      <li id="ref-9">B. Gustavsen, A. Semlyen, “Rational approximation of frequency domain responses by vector fitting,” <em>IEEE Trans. Power Delivery</em>, 14(3), 1052–1061, 1999. <a href="https://doi.org/10.1109/61.772353">doi:10.1109/61.772353</a></li>
-      <li id="ref-10">D. W. Marquardt, “An Algorithm for Least-Squares Estimation of Nonlinear Parameters,” <em>J. Society for Industrial and Applied Mathematics</em>, 11(2), 431–441, 1963. <a href="https://doi.org/10.1137/0111030">doi:10.1137/0111030</a></li>
-    </ol>
-    <ol class="references" start="11">
-      <li id="ref-11">T. J. Rothenberg, “Identification in Parametric Models,” <em>Econometrica</em>, 39(3), 577–591, 1971. <a href="https://doi.org/10.2307/1913267">doi:10.2307/1913267</a></li>
-      <li id="ref-12">L. Ljung, T. Glad, “On global identifiability for arbitrary model parametrizations,” <em>Automatica</em>, 30(2), 265–276, 1994. <a href="https://doi.org/10.1016/0005-1098(94)90029-9">doi:10.1016/0005-1098(94)90029-9</a></li>
-      <li id="ref-13">H. Akaike, “A new look at the statistical model identification,” <em>IEEE Trans. Automatic Control</em>, 19(6), 716–723, 1974. <a href="https://doi.org/10.1109/TAC.1974.1100705">doi:10.1109/TAC.1974.1100705</a></li>
-      <li id="ref-14">C. M. Hurvich, C.-L. Tsai, “Regression and time series model selection in small samples,” <em>Biometrika</em>, 76(2), 297–307, 1989. <a href="https://doi.org/10.1093/biomet/76.2.297">doi:10.1093/biomet/76.2.297</a></li>
-      <li id="ref-15">P. J. Huber, “Robust Estimation of a Location Parameter,” <em>The Annals of Mathematical Statistics</em>, 35(1), 73–101, 1964. <a href="https://doi.org/10.1214/aoms/1177703732">doi:10.1214/aoms/1177703732</a></li>
-      <li id="ref-16">B. D. McKay, A. Piperno, “Practical graph isomorphism, II,” <em>Journal of Symbolic Computation</em>, 60, 94–112, 2014. <a href="https://doi.org/10.1016/j.jsc.2013.09.003">doi:10.1016/j.jsc.2013.09.003</a></li>
-      <li id="ref-17">Keysight Technologies, “1-Port Calibration (reflection test)” and “Measurement Errors”: one-port OSL calibration corrects directivity, source match, and reflection tracking errors. Manufacturer technical documentation.</li>
-      <li id="ref-18">R. J. Duffin, “Topology of Series-Parallel Networks,” <em>Journal of Mathematical Analysis and Applications</em>, 10(2), 303–318, 1965. <a href="https://doi.org/10.1016/0022-247X(65)90125-3">doi:10.1016/0022-247X(65)90125-3</a></li>
-      <li id="ref-19">X. He, Y. Yesha, “Parallel recognition and decomposition of two terminal series parallel graphs,” <em>Information and Computation</em>, 75(1), 15–38, 1987. <a href="https://doi.org/10.1016/0890-5401(87)90061-7">doi:10.1016/0890-5401(87)90061-7</a></li>
-      <li id="ref-20">bitluni (b.luni laboratories), <em>ESP32-S3-VGA</em>: open-source C++/Arduino library generating VGA video on ESP32-S3 via the LCD_CAM peripheral and parallel GPIO output into an external resistor-ladder DAC — the signal-generation technique adapted by this project for sine-wave synthesis. GitHub repository. <a href="https://github.com/bitluni/ESP32-S3-VGA">github.com/bitluni/ESP32-S3-VGA</a></li>
-    </ol>
-  </div>
-  <div class="footer"><span>LCR Analyzer · Try1–Try3 算法理论</span><span class="pageno">25 / 25</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">14 / 14</span></div>
 </section>
 
 </body>

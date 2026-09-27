@@ -119,37 +119,37 @@ cd ..
 
 下面说明 ESP32-S3 固件（`ino/` 目录）中参考或使用的开源项目，逐项列出项目名称、链接及具体参考或使用的内容。
 
-## 一、使用的开源库 / 框架
+### 一、使用的开源库 / 框架
 
-### 1. ESP-IDF
+#### 1. ESP-IDF
 - 链接：https://github.com/espressif/esp-idf
 - 许可证：Apache-2.0
 - 使用内容：ESP32-S3 底层官方组件——ADC 连续采样驱动（`esp_adc/adc_continuous`）、GDMA 通道管理、LCD_CAM 外设寄存器结构定义（`soc/lcd_cam_struct.h`）、GPIO HAL、PSRAM 堆分配（`heap_caps`）等，用于正弦激励输出（LCD_CAM + 外部电阻网络 DAC）、74HC595 控制链与 ADC 采样。
 
-### 2. Arduino-ESP32 核心
+#### 2. Arduino-ESP32 核心
 - 链接：https://github.com/espressif/arduino-esp32
 - 许可证：LGPL-2.1
 - 使用内容：Arduino 框架核心 API——`Arduino.h`、`Serial`、`Preferences`（校准参数 NVS 存储）、`digitalWrite`（74HC595 时序）等。
 
-### 3. FreeRTOS
+#### 3. FreeRTOS
 - 链接：https://github.com/FreeRTOS/FreeRTOS-Kernel
 - 许可证：MIT
 - 使用内容：随 ESP-IDF 内置提供，用于固件任务调度（UI 任务 / 测量 Worker 任务）、队列与任务通知。
 
-### 4. TFT_eSPI
+#### 4. TFT_eSPI
 - 链接：https://github.com/Bodmer/TFT_eSPI
 - 许可证：MIT
 - 版本：2.5.43
 - 使用内容：ST7735S 彩屏 UI 的图形与文字显示。
 
-## 二、参考 / 使用的项目
+### 二、参考 / 使用的项目
 
-### 1. 许剑伟《DIY LCR 数字电桥》（"许老师电桥" / XJW01）—— 思路借鉴
+#### 1. 许剑伟《DIY LCR 数字电桥》（"许老师电桥" / XJW01）—— 思路借鉴
 - 链接：http://www.51hei.com/bbs/dpj-213447-1.html （《单片机LCR电桥程序 许老师多年前的作品》，收录了许剑伟老师的电桥程序与自述文件，源码署名"许剑伟 于莆田 2012.01"）
 - 说明：该作品原始发布于矿石收音机论坛（www.crystalradio.cn），该论坛现已关闭、原始帖子无法访问，上述链接为目前可访问的程序与资料存档。
 - 参考内容：测量电路的总体结构（激励源 → 被测阻抗 → 跨阻放大 → 采样检波的链路组织），以及跨阻放大器（TIA）多档量程切换（换挡）的思路。
 
-### 2. bitluni/ESP32-S3-VGA —— 含部分复制代码
+#### 2. bitluni/ESP32-S3-VGA —— 含部分复制代码
 - 链接：https://github.com/bitluni/ESP32-S3-VGA
 - 许可证说明：该仓库未附带 LICENSE 文件。
 - 使用内容：参考其 ESP32-S3 LCD_CAM 外设寄存器配置流程，以及 GPIO MATRIX 引脚连接（外设信号路由到 GPIO）的相关实现；部分寄存器配置及引脚连接代码直接复制自该项目，并按本项目的引脚分配与硬件需求做了适配修改（包括一些寄存器的值），用于经 LCD_CAM+GDMA 输出 8 位并行正弦波数据（外部电阻网络构成 DAC）。

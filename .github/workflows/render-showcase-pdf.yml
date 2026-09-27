@@ -33,7 +33,7 @@ jobs:
             exit 1
           fi
           SRC="$GITHUB_WORKSPACE/docs/show/html-to-ppt/slides.html"
-          OUT="$GITHUB_WORKSPACE/docs/show/html-to-ppt/LCR-硬件与Try1-Try3理论.pdf"
+          OUT="$GITHUB_WORKSPACE/docs/show/html-to-ppt/LCR-硬件与软件功能.pdf"
           "$BROWSER"             --headless=new             --no-sandbox             --disable-gpu             --allow-file-access-from-files             --no-pdf-header-footer             --virtual-time-budget=25000             --print-to-pdf="$OUT"             "file://$SRC"
           test -s "$OUT"
 
@@ -41,7 +41,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          PDF="docs/show/html-to-ppt/LCR-硬件与Try1-Try3理论.pdf"
+          PDF="docs/show/html-to-ppt/LCR-硬件与软件功能.pdf"
           if git diff --quiet -- "$PDF"; then
             echo "PDF unchanged."
             exit 0

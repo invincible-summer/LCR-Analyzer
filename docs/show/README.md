@@ -1,35 +1,29 @@
-# docs/show — 硬件部分与 Try1–Try3 算法理论讲解幻灯
+# docs/show — 作品展示幻灯（硬件部分与软件功能介绍）
 
-当前在线展示版为 25 页、16:9 的 HTML 幻灯，结构为：总标题 → 作品综述 → 硬件部分 → 软件部分（Try1–Try3 算法理论）。
+当前展示版为 14 页、16:9 的 HTML 幻灯，结构为：总标题 → 作品综述 → 硬件部分 → 软件部分（功能简介 + 电路辨识拟合展示）。
 
 - **总标题（第 1 页）**：多功能LCR测量仪（张行言&杨钧富队，2026/9/19）。
 - **作品综述（第 2–4 页）**：作品简介、功能介绍（整机接口标注与操作界面）。
-- **硬件部分（第 5–11 页）**：子标题页、硬件总体方案框图、实测数据（R / C / L / 电容容量随频率变化 / 波特图）、正弦输出波形（12 / 123 / 1234 Hz 示波器实拍）。文字与图片内容原样迁自 `html-to-ppt/硬件部分_副本.pptx`；其中的实测数据图表原为 EMF 矢量图，已从其内嵌的矢量 PDF 以 4× 分辨率重渲染为 PNG（`assets/hw/`）。正弦波发生所借鉴的 LCD_CAM + 电阻网络 DAC 方案规范引用为参考文献 [20]（bitluni, ESP32-S3-VGA）。
-- **软件部分（第 12–25 页）**：子标题页与 LCR 辨识算法理论：
-统一前向模型（电路 = 图、stamp、\(Z=b^{\mathsf T}Y^{-1}b\)）、误差度量（白化残差 / WRMSE / MAXREL / AICc）、
-Try3 的最优数值计算（解析灵敏度 + Levenberg–Marquardt）、
-Try2 的图搜索（槽位多重集枚举 + 规范化去重）、Try1 的规范 SP 树枚举。
-展示中的实测验证数字来自 v4.1.2 原生 CLI 对
-`examples/data1..4.csv` 真实测量数据的实际运行（拟合 JSON 存于 `/tmp/lcr-show/`，可复现命令见下文）。
+- **硬件部分（第 5–11 页）**：子标题页、硬件总体方案框图（正弦信号生成方案借鉴 bitluni/ESP32-S3-VGA，框图页保留引用角标）、实测数据（R / C / L / 电容容量随频率变化 / 波特图）、正弦输出波形（12 / 123 / 1234 Hz 示波器实拍）。文字与图片内容原样迁自 `html-to-ppt/硬件部分_副本.pptx`；其中的实测数据图表原为 EMF 矢量图，已从其内嵌的矢量 PDF 以 4× 分辨率重渲染为 PNG（`assets/hw/`）。
+- **软件部分（第 12–14 页）**：只介绍功能、不涉及实现——第 12 页为网页上位机功能总览（时域分析、扫频 Bode、电路辨识拟合、实时监测、实验历史、使用文档）；第 13–14 页为电路辨识拟合功能的实际运行截图（`assets/figs/`），展示自动识别出的等效电路、元件参数值，以及多候选结果的排序与对比。
 
 ## 在线展示
 
 GitHub Pages：<https://invincible-summer.github.io/LCR-Analyzer-WebSite/>
 
-页面由 `.github/workflows/pages-show.yml` 自动部署：只要 `main` 上 `docs/show/html-to-ppt/**` 更新，就会重新发布。部署时将 `slides.html` 复制为站点根目录的 `index.html`，其余 `assets/` 原样保留，因此本地离线 KaTeX、图片与网页展示使用同一份素材。
+页面由 `.github/workflows/pages-show.yml` 自动部署：只要 `main` 上 `docs/show/html-to-ppt/**` 更新，就会重新发布。部署时将 `slides.html` 复制为站点根目录的 `index.html`，其余 `assets/` 原样保留。
 
 ## 目录
 
 | 版本 | 成品 | 源文件 | 重建方式 |
 |---|---|---|---|
-| HTML→PDF（精美版） | `html-to-ppt/LCR-硬件与Try1-Try3理论.pdf` | `html-to-ppt/slides.html`（KaTeX 本地离线，`assets/`，硬件图片在 `assets/hw/`） | Chrome/Edge headless `--print-to-pdf`（页面尺寸 1280×720 px = 16:9） |
-
+| HTML→PDF（精美版） | `html-to-ppt/LCR-硬件与软件功能.pdf` | `html-to-ppt/slides.html`（纯静态 HTML/CSS，无外部依赖；硬件图片在 `assets/hw/`，软件截图在 `assets/figs/`） | Chrome/Edge headless `--print-to-pdf`（页面尺寸 1280×720 px = 16:9） |
+| PPTX | `html-to-ppt/LCR-硬件与软件功能.pptx` | 由上述 PDF 派生 | `pdftoppm -png -r 192` 渲染每页（2560×1440），python-pptx 将每页 PNG 整页插入 13.333 in × 7.5 in 幻灯 |
 
 ```sh
 # HTML 版重建（任一 Chromium 系浏览器）
 chrome --headless=new --no-pdf-header-footer --virtual-time-budget=25000 \
        --print-to-pdf=out.pdf file:///…/html-to-ppt/slides.html
-
 ```
 
 ## 讲解顺序
@@ -45,33 +39,6 @@ chrome --headless=new --no-pdf-header-footer --virtual-time-budget=25000 \
 9. 实测数据-电容容量随频率变化（趋势图与说明单页展示）
 10. 正弦输出（12 / 123 / 1234 Hz 输出波形）
 11. 实测数据-波特图测量
-12. 软件部分子标题页：LCR 阻抗测量与电路辨识
-13. 共用核 I：问题定义与三档先验
-14. 共用核 II：电路图模型与元件表示
-15. 共用核 III：节点导纳矩阵装配
-16. 共用核 IV：端口阻抗前向求解 \(Z=b^{\mathsf T}Y^{-1}b\)
-17. 共用核 V：拟合误差与模型选择指标
-18. Try3（I）：元件参数计算——参数化、初值与多起点
-19. Try3（II）：元件参数计算——解析灵敏度与 Levenberg–Marquardt
-20. Try2：拓扑搜索——完整枚举、固定参数比较与候选排序
-21. Try1：结构发现——规范串并联（SP）树枚举
-22. Try1 拟合样例：未知结构搜索结果与拟合曲线
-23. Try3 拟合样例：已知拓扑参数拟合与诊断
-24. 总结：共用核与 Try1–Try3
-25. 参考文献与技术标准
-
-## 数据与图的可复现性
-
-图由 `examples/` 真实数据 + v4.1.2 CLI 生成：
-
-```sh
-cmake -S AlgorithmLcr -B /tmp/lcr-v4-build -DCMAKE_BUILD_TYPE=Release && cmake --build /tmp/lcr-v4-build -j4
-B=/tmp/lcr-v4-build/lcr
-$B try3 --csv examples/data2.csv --topology examples/v4/data2.topology.txt --json
-$B try3 --csv examples/data3.csv --topology examples/v4/data3.topology.txt --json
-$B try3 --csv examples/data4.csv --topology examples/v4/data4.topology.txt --json
-$B try2 --csv examples/data4.csv --components examples/v4/data4.components.txt --json
-$B try1 --csv examples/data2.csv --max-n 4 --top-k 8 --json
-```
-
-理论验证图由这些 JSON 的 `theory` 曲线与 `diagnostics` 经 matplotlib 绘制；新增的 Try1 / Try3 拟合样例页直接采用前端实际运行界面截图，用于展示候选排序、等效电路、拟合曲线与 Try3 诊断输出。
+12. 软件部分功能简介：网页上位机功能总览
+13. 电路辨识拟合：自动识别等效电路（实际运行截图）
+14. 电路辨识拟合：多候选结果对比（实际运行截图）
