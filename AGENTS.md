@@ -39,7 +39,7 @@ conda run -n lcr python -m pytest
 ./start.sh stop
 ```
 
-Repository: github.com/invincible-summer/LCR-Analyzer-WebSite. Current development branch: `dev`. If a commit is requested, commit on the development branch without a PR. Do not overwrite unrelated user work.
+Repository: github.com/invincible-summer/LCR-Analyzer. Current development branch: `dev`. If a commit is requested, commit on the development branch without a PR. Do not overwrite unrelated user work.
 
 ## Attention
 

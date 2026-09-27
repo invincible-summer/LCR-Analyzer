@@ -9,8 +9,8 @@
 
 ## 在线展示
 
-- 应用（GitHub Pages 主页）：<https://invincible-summer.github.io/LCR-Analyzer-WebSite/>
-- 展示幻灯：<https://invincible-summer.github.io/LCR-Analyzer-WebSite/show/>
+- 应用（GitHub Pages 主页）：<https://invincible-summer.github.io/LCR-Analyzer/>
+- 展示幻灯：<https://invincible-summer.github.io/LCR-Analyzer/show/>
 
 页面由 `.github/workflows/pages-show.yml` 自动部署：只要 `main` 上 `frontend/**` 或 `docs/show/html-to-ppt/**` 更新，就会重新构建并发布——前端应用构建为静态站点（BLE + C++ WASM 全部在浏览器本地运行）发布在根路径；本目录的 `slides.html` 连同 `assets/` 发布在 `/show/`，`slides.html` 同时复制为该路径的 `index.html`。应用侧边栏的「算法理论展示」链接即指向 `/show/`。
 

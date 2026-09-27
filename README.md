@@ -39,7 +39,7 @@ LCR Analyzer 是一个面向 **ESP32-S3 阻抗测量、扫频分析与单端口 
 
 GitHub Pages 静态前端：
 
-**https://invincible-summer.github.io/LCR-Analyzer-WebSite/app/**
+**https://invincible-summer.github.io/LCR-Analyzer/**
 
 静态版可以使用不依赖服务器数据库的浏览器功能，包括 CSV 示例/导入、Web Bluetooth 数据接收、C++/WASM 网络辨识及 Bode/Nyquist 展示。Web Bluetooth 需要支持该 API 的浏览器、用户手势和 HTTPS secure context。
 
