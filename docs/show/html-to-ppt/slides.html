@@ -199,6 +199,57 @@ ul.tight li::marker { color: var(--accent); }
 .cover h2 { font-size: 24px; font-weight: 500; color: #bae6fd; margin: 0 0 34px; }
 .cover .meta { margin-top: 46px; font-size: 15px; color: #93c5fd; line-height: 1.9; }
 .cover .wave { position: absolute; right: 70px; bottom: 60px; opacity: .5; }
+
+
+/* ---------- personal contribution appendix ---------- */
+.contrib-slide { padding: 30px 58px 42px 58px; }
+.contrib-slide .titlebar { margin-bottom: 12px; padding-bottom: 8px; }
+.contrib-headnote { position:absolute; right:60px; top:50px; color:var(--muted); font-size:13px; }
+.contrib-main { display:grid; grid-template-columns: 0.78fr 1.32fr; gap:18px; height:398px; }
+.contrib-left, .contrib-right { background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 1px 4px rgba(15,23,42,.07); padding:15px 18px; min-height:0; }
+.contrib-left h3, .contrib-right h3 { margin:0 0 10px; font-size:17px; color:var(--accent-dark); }
+.contrib-item { display:grid; grid-template-columns:38px 1fr; gap:10px; align-items:start; margin:9px 0 11px; }
+.contrib-num { width:38px; height:38px; border-radius:8px; background:#2563eb; color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; font-weight:800; }
+.contrib-item:nth-of-type(3) .contrib-num { background:#0d9488; }
+.contrib-item:nth-of-type(4) .contrib-num { background:#ea580c; }
+.contrib-item b { font-size:14.5px; color:var(--ink); }
+.contrib-item p { margin:2px 0 0; font-size:12.7px; line-height:1.42; color:var(--ink2); }
+.contrib-boundary { margin-top:8px; background:#fff7ed; border:1px solid #fdba74; color:#9a3412; border-radius:8px; padding:7px 10px; font-size:11.5px; font-weight:600; }
+.contrib-right { position:relative; padding:14px 16px 12px; }
+.contrib-subnote { position:absolute; right:16px; top:16px; color:var(--muted); font-size:11.5px; }
+.flow-row { display:flex; align-items:center; justify-content:center; gap:8px; margin-top:18px; }
+.flow-box { border:1.6px solid #93c5fd; background:#eff6ff; border-radius:10px; padding:8px 9px; text-align:center; font-size:11.2px; line-height:1.25; min-width:128px; }
+.flow-box b { display:block; color:#1d4ed8; font-size:13.5px; margin-bottom:2px; }
+.flow-box.gray { border-color:#cbd5e1; background:#f8fafc; }
+.flow-box.gray b { color:#475569; }
+.flow-box.green { border-color:#6ee7b7; background:#ecfdf5; }
+.flow-box.green b { color:#047857; }
+.flow-arrow { color:#94a3b8; font-size:20px; font-weight:700; }
+.fit-core { margin:14px auto 9px; width:72%; border:1px solid #cbd5e1; background:#f1f5f9; border-radius:8px; padding:7px 8px; text-align:center; font-size:13.5px; font-weight:800; }
+.try-row { display:flex; justify-content:center; align-items:stretch; gap:52px; margin:0 0 9px; }
+.try-box { width:170px; border-radius:10px; padding:7px 8px; text-align:center; font-size:11px; line-height:1.25; border:1.5px solid #93c5fd; background:#eff6ff; }
+.try-box b { display:block; font-size:13px; color:#1d4ed8; margin-bottom:2px; }
+.try-box.t2 { border-color:#6ee7b7; background:#ecfdf5; }
+.try-box.t2 b { color:#047857; }
+.try-box.t3 { border-color:#fdba74; background:#fff7ed; }
+.try-box.t3 b { color:#c2410c; }
+.model-row { display:flex; align-items:center; justify-content:center; gap:10px; }
+.model-box { flex:1 1 auto; max-width:430px; border:2px solid #2563eb; border-radius:10px; padding:7px 10px; text-align:center; font-size:12px; line-height:1.3; }
+.model-box b { color:#1d4ed8; }
+.result-box { width:170px; background:#2563eb; color:#fff; border-radius:10px; padding:8px 10px; text-align:center; font-size:12px; line-height:1.3; font-weight:700; }
+.timeline-head { display:flex; align-items:center; justify-content:space-between; margin-top:14px; }
+.timeline-head .kicker { margin:0; }
+.timeline-head .repo-note { font-size:11px; color:var(--muted); }
+.timeline { position:relative; height:115px; margin-top:7px; padding:0 12px; display:grid; grid-template-columns:repeat(6,1fr); column-gap:8px; }
+.timeline::before { content:""; position:absolute; left:28px; right:28px; top:55px; height:2px; background:#dbe4ee; }
+.tl-item { position:relative; text-align:center; font-size:10.8px; color:var(--ink2); }
+.tl-date { font-weight:800; color:var(--ink); font-size:11.5px; }
+.tl-sha { color:var(--muted); font-size:9.5px; margin-top:2px; white-space:nowrap; }
+.tl-dot { width:14px; height:14px; border-radius:50%; background:#2563eb; position:absolute; top:49px; left:50%; transform:translateX(-50%); box-shadow:0 0 0 3px #fff; }
+.tl-item:nth-child(4) .tl-dot { background:#0d9488; }
+.tl-desc { position:absolute; top:72px; left:3px; right:3px; line-height:1.25; }
+.contrib-footnote { position:absolute; left:60px; bottom:42px; font-size:9.5px; color:#94a3b8; }
+
 </style>
 </head>
 <body>
@@ -216,7 +267,7 @@ ul.tight li::marker { color: var(--accent); }
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 15</span>
+    <span>LCR Analyzer · 多功能LCR测量仪</span><span class="pageno">1 / 16</span>
   </div>
 </section>
 
@@ -231,7 +282,7 @@ ul.tight li::marker { color: var(--accent); }
       <p>本作品是一个LCR测量仪，可以在10Hz-10kHz内几乎任意频点测量待测元件的复阻抗并自动计算串并联等效阻容感。此外还支持双端口网络幅频特性和相频特性测量，以及10Hz-10kHz正弦波发生器功能。本作品可以将测量得到的数据通过BLE发送到专用网页上进行可视化展示，同时网页也具备单端口网络拟合功能，可以通过多频点扫频数据拟合出等效电路结构。</p>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">2 / 16</span></div>
 </section>
 
 <!-- ================= H3 · 功能介绍（整机） ================= -->
@@ -250,7 +301,7 @@ ul.tight li::marker { color: var(--accent); }
       <div class="anno rev" style="left:-13.5%; top:54.3%; transform:translate(0,-50%)"><i></i>编码器</div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">3 / 16</span></div>
 </section>
 
 <!-- ================= H4 · 功能介绍（界面与功能） ================= -->
@@ -282,7 +333,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 作品综述</span><span class="pageno">4 / 16</span></div>
 </section>
 
 <!-- ================= HD · 硬件部分子标题页 ================= -->
@@ -298,7 +349,7 @@ ul.tight li::marker { color: var(--accent); }
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 15</span>
+    <span>LCR Analyzer · 硬件部分</span><span class="pageno">5 / 16</span>
   </div>
 </section>
 
@@ -311,7 +362,7 @@ ul.tight li::marker { color: var(--accent); }
   <div class="hw-figrow">
     <img src="assets/hw/overview.png" alt="硬件总体方案框图（信号链总览）">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">6 / 16</span></div>
 </section>
 
 <!-- ================= H6 · 实测数据-R ================= -->
@@ -337,7 +388,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">7 / 16</span></div>
 </section>
 
 <!-- ================= H7 · 实测数据-C/L ================= -->
@@ -364,7 +415,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">8 / 16</span></div>
 </section>
 
 <!-- ================= H7b · 实测数据-电容容量随频率变化 ================= -->
@@ -385,7 +436,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">9 / 16</span></div>
 </section>
 
 <!-- ================= H7c · 正弦输出 ================= -->
@@ -399,7 +450,7 @@ ul.tight li::marker { color: var(--accent); }
     <figure><img src="assets/hw/sine-123hz.jpg" alt="123 Hz 正弦输出波形"><figcaption class="figcap">123 Hz 输出波形</figcaption></figure>
     <figure><img src="assets/hw/sine-1234hz.jpg" alt="1234 Hz 正弦输出波形"><figcaption class="figcap">1234 Hz 输出波形</figcaption></figure>
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">10 / 16</span></div>
 </section>
 
 <!-- ================= H8 · 实测数据-波特图测量 ================= -->
@@ -411,7 +462,7 @@ ul.tight li::marker { color: var(--accent); }
   <div class="hw-figrow">
     <img src="assets/hw/bode.png" alt="双端口波特图实测结果">
   </div>
-  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 硬件部分</span><span class="pageno">11 / 16</span></div>
 </section>
 
 <!-- ================= SW · 软件部分子标题页 ================= -->
@@ -427,7 +478,7 @@ ul.tight li::marker { color: var(--accent); }
           fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".55"/>
   </svg>
   <div class="footer" style="border-color:rgba(125,211,252,.25); color:#93c5fd;">
-    <span>LCR Analyzer · 软件部分</span><span class="pageno">12 / 15</span>
+    <span>LCR Analyzer · 软件部分</span><span class="pageno">12 / 16</span>
   </div>
 </section>
 
@@ -465,7 +516,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">13 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">13 / 16</span></div>
 </section>
 
 <!-- ================= S2 · 电路辨识拟合：自动识别等效电路 ================= -->
@@ -491,7 +542,7 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">14 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">14 / 16</span></div>
 </section>
 
 <!-- ================= S3 · 电路辨识拟合：多候选结果对比 ================= -->
@@ -517,7 +568,72 @@ ul.tight li::marker { color: var(--accent); }
       </div>
     </div>
   </div>
-  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">15 / 15</span></div>
+  <div class="footer"><span>LCR Analyzer · 软件部分</span><span class="pageno">15 / 16</span></div>
+</section>
+
+
+<!-- ================= APPENDIX · 个人贡献说明 ================= -->
+<section class="slide contrib-slide">
+  <div class="titlebar">
+    <div class="kicker">PERSONAL CONTRIBUTION · SOFTWARE / ESP32 APP / ALGORITHM</div>
+    <h1 class="title">个人贡献说明</h1>
+  </div>
+  <div class="contrib-headnote">明确区分本人实现与 DO_NOT_TOUCH / DNT 测量核心</div>
+
+  <div class="contrib-main">
+    <div class="contrib-left">
+      <h3>职责边界与主要贡献</h3>
+      <div class="contrib-item">
+        <div class="contrib-num">1</div>
+        <div><b>ESP32-S3 应用层（DNT 外）</b><p>负责界面 / TFT、非阻塞状态机与扫频编排、BLE GATT 数据传输、数据集封装、设备端与网页联调，以及相关测试 / CI。</p></div>
+      </div>
+      <div class="contrib-item">
+        <div class="contrib-num">2</div>
+        <div><b>网站与数据链</b><p>负责 Vue 前端、Web Bluetooth 接收、测量 / 扫频 / 拟合页面、WASM 桥接、拟合结果诊断与可视化、GitHub Pages 部署。</p></div>
+      </div>
+      <div class="contrib-item">
+        <div class="contrib-num">3</div>
+        <div><b>拟合算法调研与实现</b><p>围绕 Try1 / Try2 / Try3 完成文献调研、理论建模与实现审计：图枚举 / 规范化、节点导纳前向模型、数值优化与 Jacobian、WASM 集成和验证。</p></div>
+      </div>
+      <div class="contrib-boundary">贡献边界：DO_NOT_TOUCH / DNT（Do-No-patch）底层测量核心本身不计入本人贡献。</div>
+    </div>
+
+    <div class="contrib-right">
+      <h3>核心软件 / 模型框图</h3>
+      <div class="contrib-subnote">数据通路 + 三类单端口反问题共用前向模型</div>
+      <div class="flow-row">
+        <div class="flow-box gray"><b>DNT 测量核心</b>测量结果输入<br>（不计入本人贡献）</div><span class="flow-arrow">→</span>
+        <div class="flow-box"><b>ESP32 应用层</b>UI/TFT · 状态机<br>Sweep · 协议封装</div><span class="flow-arrow">→</span>
+        <div class="flow-box green"><b>BLE / CSV</b>GATT · CRC<br>数据集传输</div><span class="flow-arrow">→</span>
+        <div class="flow-box"><b>Web 前端</b>导入 · 可视化<br>拟合控制 · 诊断</div>
+      </div>
+      <div class="fit-core">C++ / WASM FITTING CORE</div>
+      <div class="try-row">
+        <div class="try-box"><b>Try1</b>结构 / 类型 / 参数未知</div>
+        <div class="try-box t2"><b>Try2</b>器件集合已知，拓扑未知</div>
+        <div class="try-box t3"><b>Try3</b>拓扑 / 类型已知，数值未知</div>
+      </div>
+      <div class="model-row">
+        <div class="model-box"><b>共用前向模型</b> &nbsp; Y = A diag(y) A<sup>T</sup> &nbsp; | &nbsp; Z(f) = b<sup>T</sup>Y<sup>-1</sup>b<br><span style="color:#64748b">统一残差 / 权重 → 拟合与模型选择</span></div>
+        <div class="result-box">等效电路 / 参数<br>误差与可辨识诊断</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-head">
+    <div class="kicker">GITHUB COMMITS TIMELINE</div>
+    <div class="repo-note">代表性提交（非完整列表） · repository: invincible-summer/LCR-Analyzer · main</div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-date">09/02-09/04</div><div class="tl-sha">b616dc8 · 14cc72e</div><div class="tl-dot"></div><div class="tl-desc">LCR compute；Try1/2/3<br>接入 C++→WASM 与 /fit</div></div>
+    <div class="tl-item"><div class="tl-date">09/08</div><div class="tl-sha">c79bec8 · f9cd2cb</div><div class="tl-dot"></div><div class="tl-desc">算法完善与理论审计；<br>统一报告 / 诊断 schema</div></div>
+    <div class="tl-item"><div class="tl-date">09/08-09/09</div><div class="tl-sha">25566e0 · 76b2570 · 41e3ba3</div><div class="tl-dot"></div><div class="tl-desc">Native/WASM parity；<br>网页诊断与 CI 全链路</div></div>
+    <div class="tl-item"><div class="tl-date">09/11</div><div class="tl-sha">c1d4dcf</div><div class="tl-dot"></div><div class="tl-desc">ESP32-S3 应用固件；<br>BLE GATT v1 + WebBluetooth</div></div>
+    <div class="tl-item"><div class="tl-date">09/12-09/15</div><div class="tl-sha">3ad2acc · 7311757 · aa9490f · ed41ca4</div><div class="tl-dot"></div><div class="tl-desc">DNT 外围集成、非阻塞扫频；<br>LCR UI / TFT 完善</div></div>
+    <div class="tl-item"><div class="tl-date">09/27</div><div class="tl-sha">7f9d9da · 8f4e993</div><div class="tl-dot"></div><div class="tl-desc">Pages / 展示站部署；<br>最终材料收束</div></div>
+  </div>
+  <div class="contrib-footnote">算法框图依据项目统一网络模型与 Try1/Try2/Try3 定义；Commit timeline 取自 main 分支代表性提交。</div>
+  <div class="footer"><span>LCR Analyzer · 个人课程报告附页</span><span>个人贡献 / GitHub: invincible-summer</span><span class="pageno">16 / 16</span></div>
 </section>
 
 </body>
